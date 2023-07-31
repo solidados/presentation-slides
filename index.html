@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/league.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 style="color: white;">TypeScript</h1>
+        <img src="assets/logo-ts-short.png" style="height: 200px; width: 200px;" alt="ts-logo">
+
+        <aside class="notes">
+          <p>[Slide 1]<br>
+            Hello, everyone! <br>
+            Today, I'm going to talk about TypeScript, a powerful and widely
+            used programming language that enhances the capabilities of JavaScript. <br>
+            In
+            this presentation, I will try to dive into its history a little bit, cover the basics of TypeScript, what is
+            it, why it was developed, and explore some of its practical use cases.
+          </p>
+        </aside>
+      </section>
+
+      <section>
+        <section>
+          <h2>History and How to use</h2>
+          <aside class="notes">
+            <p>[Slide 2.1]<br>
+              JavaScript, когда создавался изначально, не был предназначен (designed) для больших приложений, в нём была
+              заложена
+              динамическая типизация. <br>
+              То есть любой пременной всегда можно было присвоить другой тип данных (например была переменная типа
+              "строка", и ей
+              можно было присвоить тип "массив"). <br><br>
+              За последние годы JavaScript существенно эволюционировал. Теперь, это уже не просто обычный язык для
+              написания скриптов, а (complete programming language) полноценный язык программирования, который служит
+              для создания
+              клиентских приложений, серверных приложений, мобильных и десктопных приложений, используется повсеместно,
+              где он необходим.
+              <br><br>
+              So, let's start with the history.
+            </p>
+          </aside>
+        </section>
+        <section data-transition="zoom-in fade-out">
+          <img src="assets/logo-ms-long.png" style="height: 200px; margin: 0;" alt="ms logo">
+          <hr>
+          <img src="assets/logo-ts-long.png" style="height: 100px; width: 433px; margin-top: 20px;" alt="ms logo">
+          <aside class="notes">
+            <p>[Slide 2.2]<br>
+              TypeScript was first introduced in 2012 by Microsoft, and its development was
+              led by Danish programmer - Anders Hejlsberg, the creator of C#.
+            </p>
+          </aside>
+        </section>
+        <section data-transition="fade-in zoom-out">
+          <h3 style="padding: 20px; font-weight: lighter; letter-spacing: 2.5px;">Anders Hejlsberg</h3>
+          <img src="assets/anders-hejlsberg.webp" style="height: 400px;" alt="Anders Hejlsberg">
+          <aside class="notes">
+            <p>[Slide 2.3]<br>
+              TypeScript is a superset of JavaScript, meaning
+              it builds upon JavaScript by adding static typing, which provides developers with more robust and
+              predictable code.<br></p>
+          </aside>
+        </section>
+        <section data-transition="fade-in fade-out">
+          <img src="assets/falling-numbers.gif" style="width: 850px;" alt="faling numbers">
+          <aside class="notes">
+            <p>[Slide 2.4]<br>
+              It was designed to address some of the challenges faced by JavaScript developers,
+              such as the lack of static typing, which can lead to errors and make large codebases difficult to
+              maintain.
+              By adding static typing, TypeScript brings the benefits of early error detection, improved tooling
+              support, and better
+              code organization.</p>
+          </aside>
+        </section>
+        <section data-transition="fade-in zoom-out">
+          <h3 style="padding: 20px; font-weight: lighter; letter-spacing: 2.5px;">Study</h3>
+          <img src="assets/logo-ts-long.png" style="height: 150px;" alt="ts-logo">
+          <a href="https://www.typescriptlang.org/">https://www.typescriptlang.org</a>
+          <aside class="notes">
+            <p>[Slide 2.5]<br><br>The official website of TypeScript is located on this link and shows the latest
+              version of typescript, allows to download or update it. It has different features such as code-check, a
+              playground, links to community, where you can always ask or help others. But mostly useful here is -
+              Documentation, where you can study, pass tutorials, and find a complete information regarding any issues
+              that may arise. <br><br>
+              Let's go to playground and see how it works...
+            </p>
+          </aside>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Get started</h2>
+        </section>
+        <section data-transition="zoom-in fade-out">
+          <h3 data-transition="fade-in fade-out">Installation</h3>
+          <p>Visit the world's largest software registry</p>
+          <a href="https://www.npmjs.com/package/typescript">npm</a>
+          <p>to download the typescript package</p>
+          <aside class="notes">
+            <p>
+              [Slide 3.1] <br>
+              On the npm website you can find the typescript package and information about its installation. <br>
+              Here you can also find the number of weekly downloads and it is more than 41 millions. For the passed year
+              this count arise from 6.2 millions upto 41. This clearly shows that TypeScript has its popularity among
+              developers and in high demand.
+            </p>
+          </aside>
+        </section>
+        <section data-state="make-it-pop" data-transition="zoom-in fade-out">
+          <h3>How to compile</h3>
+          <p class="fragment">
+          <pre class="fragment fade-up">$ tsc index.ts</pre>
+          </p>
+          <code class="fragment fade-up">index.js</code>
+        </section>
+      </section>
+
+      <section data-markdown>
+        <textarea data-template>
+          ### Basic types
+          ```ts [1|2|4|5|6|8-9|11|13|14-15]
+          const isFetching: boolean = true;
+          const isLoading: boolean = false;
+          
+          let int: number = 42;
+          int = '';
+          // Error: Type 'string' is not assignable to type 'number'.
+          
+          const float: number = 4.2;
+          const bigNum: number = 3e10;
+
+          const message: string = 'I am a string';
+          
+          const arrNums1: number[] = [1, 1, 2, 3, 5, 8, 13];
+          const arrNums2: Array<number> = [1, 1, 2, 3, 5, 8, 13];
+          // Generic type describes the type of content
+          ```
+          ---
+          ### Basic types (Tuple)
+          ```ts [16: 1|3|4]
+          const arrStr: string[] = ['Hello', 'TypeScript'];
+          
+          // Tuple
+          const contact: [string, number] = ['John', 02011234567]
+          ```
+          ---
+          ### Basic types (Any)
+          ```ts [20: 1|2|3|3-4|5|7|7-8|9|9-10]
+          // There are situations when you need to override a variable
+          let variable = 42;
+          // ...
+          variable = 'New String';
+          // Error: Type 'string' is not assignable to type 'number'
+
+          // Any
+          let variable: any = 42;
+          variable = 'New String';
+          variable = ['John', 02011234567];
+          ```
+          ---
+          ### Basic types (Void)
+          ```ts [30: 1|2, 4|3|5|5-6]
+          // functions that return void
+          function sayName(name: string): void {
+            console.log(name);
+          }
+          sayName('John')
+          // John
+          ```
+          ---
+          ### Basic types (Never)
+          ```ts [36: 1|2,4|3|1-4]
+          // If the function returns an Error and never terminates
+          function throwError(message: string) {
+            throw new Error(message);
+          }
+          ```
+          ---
+          ### Basic types (Never)
+          ```ts [36: 1-4]
+          // If the function returns an Error and never terminates
+          function throwError(message: string): never {
+            throw new Error(message);
+          }
+          ```
+          ---
+          ### Basic types (Never)
+          ```ts [40: 1|2,6|3,5|4|1-6]
+          // If the function always run
+          function infinite(): never {
+            while (true) {
+              // ...
+            }
+          }
+          ```
+          ---
+          ### Basic types (Type)
+          ##### Structure that allows to create your own types
+          *Example: you can use primitive types and create their alias*
+          ```ts [46: 1|2|4|4,5|4,6|4,7|7,8]
+          type Login = string;
+          const login: Login = 'admin';
+
+          type ID = string | number;
+          const id1: ID = 123;
+          const id2: ID = '123';
+          const id3: ID = true;
+          // Type 'true' is not assignable to type 'string|number'
+          ```
+          ---
+          ### Basic types (Null & Undefined)
+          ```ts [54: 1]
+          type SomeType = string | null | undefined;
+          ```
+          *But you must remember that regarding functions that return nothing you should use `void` instead:*
+          ```ts [55: 0|1,3]
+          function returnNone(): void {
+            // ...
+          }
+          ```
+          </textarea>
+      </section>
+      <section>
+        <h2>Development data types</h2>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
+          - Interfaces <!-- .element: class="fragment" data-fragment-index="1" -->
+          - Enum entities<!-- .element: class="fragment" data-fragment-index="2" -->
+          - Functions overloading<!-- .element: class="fragment" data-fragment-index="3" -->
+          - Classes<!-- .element: class="fragment" data-fragment-index="4" -->
+          - Modifiers (i.e. protected, private, public)<!-- .element: class="fragment" data-fragment-index="5" -->
+          - Guards (support structures)<!-- .element: class="fragment" data-fragment-index="6" -->
+          - Operators<!-- .element: class="fragment" data-fragment-index="7" -->
+          - ...<!-- .element: class="fragment" data-fragment-index="8" -->
+        </script>
+      </section>
+
+      <section data-transition="fade-in zoom-out">
+        <h3 style="padding: 20px; font-weight: lighter; letter-spacing: 2.5px;">... at conclusion</h3>
+        <img src="assets/logo-ts-long.png" style="height: 150px;" alt="ts-logo">
+        <a href="https://www.typescriptlang.org/">https://www.typescriptlang.org</a>
+      </section>
+
+      <section data-markdown>
+        <script type="text/template">
+        <!-- .slide: data-background="#fff0c0" -->
+        Thank you
+        </script>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script src="plugin/anything/plugin.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // ...
+      plugins: [RevealAnything],
+      // ...
+    });
+  </script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+      progress: true,
+      transition: 'zoom',
+      markdown: {
+        smartypants: true
+      },
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
